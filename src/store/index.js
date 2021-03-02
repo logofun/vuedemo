@@ -10,7 +10,7 @@ import mutations from '@/store/modules/mutations';
  * 加载layouts,view文件下的model
  */
 const layoutModules = import.meta.globEager('../layouts/**/model.js')
-const viewModules = import.meta.globEager('../view/**/model.js')
+const viewModules = import.meta.globEager('../views/**/model.js')
 const files = {...layoutModules, ...viewModules}
 
 const modules = {}
@@ -24,6 +24,7 @@ Object.keys(files).forEach((key) => {
 Object.keys(modules).forEach((key) => {
   modules[key]['namespaced'] = true
 })
+
 
 /**
  * 创建Store

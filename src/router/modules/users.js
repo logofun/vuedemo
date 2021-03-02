@@ -1,10 +1,8 @@
-import BasicLayout from '@/layouts/basicLayout/index.vue';
-
 export default {
   orderNo: 2,
   path: '/users',
   name: 'users',
-  component: BasicLayout,
+  component: () => import('@/layouts/basicLayout/index.vue'),
   meta: {
     icon: 'TeamOutlined',
     title: '用户管理',

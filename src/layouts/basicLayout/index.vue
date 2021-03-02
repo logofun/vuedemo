@@ -14,17 +14,18 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import sliderLayout from './components/SliderLayout.vue'
 import headerLayout from './components/HeaderLayout.vue'
 import breadcrumbLayout from './components/BreadcrumbLayout.vue'
 
-export default {
+export default defineComponent({
   components: {
     sliderLayout,
     headerLayout,
     breadcrumbLayout,
   },
-}
+})
 </script>
 
 <style lang="less">

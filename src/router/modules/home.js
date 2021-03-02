@@ -1,10 +1,8 @@
-import BasicLayout from '@/layouts/basicLayout/index.vue';
-
 export default {
   orderNo: 1,
   path: '/home',
   name: 'home',
-  component: BasicLayout,
+  component: () => import('@/layouts/basicLayout/index.vue'),
   hideChildrenInMenu: true,
   meta: {
     icon: 'HomeOutlined',

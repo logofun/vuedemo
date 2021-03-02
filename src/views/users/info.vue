@@ -19,6 +19,7 @@ export default defineComponent({
     const store = useStore()
 
     const id = route.query.id
+    console.log(store.state.users);
     const msg = computed(() => store.state.users.msg)
 
     const loading = ref(false)

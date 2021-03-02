@@ -7,5 +7,8 @@ export default {
   SET_USER_INFO: (state, data) => {
     state.userInfo = data
     setLocalStorage(userInfo, data)
+  },
+  SET_ROUTERS: (state, data) => {
+    state.routers = data
   }
 }

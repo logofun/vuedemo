@@ -1,16 +1,17 @@
-import { asyncRoutes } from './routes'
+import store from '@/store';
 
 let isNeedGetRoutes = true
 
 export const setPermissionRouter = (router) => {
   router.beforeEach(async (to, from, next) => {
     if (isNeedGetRoutes) {
-      router.options.routes.push(...asyncRoutes)
-      asyncRoutes.forEach(route => {
-        router.addRoute(route);
-        isNeedGetRoutes = false
+      store.dispatch('getRouters')
+      store.state.routers.forEach(route => {
+        router.addRoute(route)
       })
-      next({...to, replace: true});
+      router.options.routes.push(...store.state.routers)
+      isNeedGetRoutes = false
+      next({...to, replace: true})
     } else {
       next()
     }

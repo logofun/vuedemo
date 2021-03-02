@@ -1,6 +1,7 @@
 import router from '@/router';
 import { message } from 'ant-design-vue';
 import { sleep } from '@/utils'
+import { basicRoutes, asyncRoutes } from '@/router/routes'
 
 export default {
   /**
@@ -18,6 +19,12 @@ export default {
   clearStatic({ commit }) {
     commit('SET_STATIC_DATA', {})
   },
+  /**
+   * 登录
+   * @param commit
+   * @param data
+   * @return {Promise<unknown>}
+   */
   login({ commit }, data) {
     return new Promise(resolve => {
       commit('SET_USER_INFO', {
@@ -47,5 +54,14 @@ export default {
       time && (await sleep(time))
       path && router.push(path)
     })
+  },
+  /**
+   * 获取路由
+   * @param commit
+   * @param data
+   */
+  getRouters({ commit }, data) {
+    const routers = basicRoutes.concat(asyncRoutes)
+    commit('SET_ROUTERS', routers)
   }
 }
