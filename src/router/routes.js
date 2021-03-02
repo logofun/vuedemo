@@ -19,7 +19,7 @@ export const LoginRoute = {
   path: '/login',
   name: 'login',
   hidden: true,
-  component: () => import('@/view/login/index.vue'),
+  component: () => import('@/views/login/index.vue'),
   meta: {
     title: '登录',
   }

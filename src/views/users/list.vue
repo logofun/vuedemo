@@ -24,8 +24,8 @@ import {defineComponent, ref, reactive, watch, createVNode} from 'vue';
 import moment from 'moment'
 import SearchPanel from '@/components/SearchPanel/index.vue'
 import TablePanel from '@/components/TablePanel/index.vue'
-import UserModal from '@/view/users/components/UserModal.vue';
-import {addUser, updateUser, delUser} from '@/view/users/service';
+import UserModal from '@/views/users/components/UserModal.vue';
+import {addUser, updateUser, delUser} from '@/views/users/service';
 import {message, Modal} from 'ant-design-vue'
 
 const columns = [

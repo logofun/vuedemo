@@ -14,7 +14,7 @@ export default {
     {
       path: '/users/list',
       name: 'usersList',
-      component: () => import('@/view/users/list.vue'),
+      component: () => import('@/views/users/list.vue'),
       meta: {
         title: '用户列表',
       }
@@ -23,7 +23,7 @@ export default {
       path: '/users/info',
       name: 'usersInfo',
       hidden: true,
-      component: () => import('@/view/users/info.vue'),
+      component: () => import('@/views/users/info.vue'),
       meta: {
         parentName: 'usersList',
         title: '用户详情',

@@ -15,7 +15,7 @@ export default {
     {
       path: '/home/welcome',
       name: 'homeWelcome',
-      component: () => import('@/view/home/welcome.vue'),
+      component: () => import('@/views/home/welcome.vue'),
       meta: {}
     }
   ]
