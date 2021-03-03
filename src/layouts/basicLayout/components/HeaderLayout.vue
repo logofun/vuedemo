@@ -1,7 +1,7 @@
 <template>
   <a-layout-header class="header-layout">
-    <menu-unfold-outlined v-if="collapsed" class="trigger" @click="setCollapsedStatus"/>
-    <menu-fold-outlined v-else class="trigger" @click="setCollapsedStatus"/>
+    <menu-unfold-outlined v-if="collapsed" class="trigger" @click="setCollapsedStatus(false)"/>
+    <menu-fold-outlined v-else class="trigger" @click="setCollapsedStatus(true)"/>
     <div class="header-layout-right">
       <a-dropdown class="user-info">
         <div>
@@ -25,8 +25,8 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore();
-const setCollapsedStatus = () => {
-  store.commit('basicLayout/SET_COLLAPSED_STATUS')
+const setCollapsedStatus = (data) => {
+  store.commit('basicLayout/SET_COLLAPSED_STATUS', data)
 }
 
 const userInfo = computed(() => store.state.userInfo)

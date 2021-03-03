@@ -101,14 +101,29 @@ export default {
       selectedKeys.value = [`${key}`]
     }
 
+    /**
+     * 屏幕尺寸变化时
+     */
+    const onResize = () => {
+      if ( window.innerWidth < 1200) {
+        store.commit('basicLayout/SET_COLLAPSED_STATUS', true)
+      }
+    }
+
     onMounted(() => {
       setSelectStatus()
+      window.addEventListener('resize', onResize);
     })
 
     onBeforeRouteUpdate((to) => {
       setSelectStatus()
     });
 
+    /**
+     * router排序
+     * @param menuModules
+     * @return {void | this }
+     */
     const sortMenu = (menuModules) => {
       return menuModules.sort((a, b) => {
         return (a.orderNo || 0) - (b.orderNo || 0);

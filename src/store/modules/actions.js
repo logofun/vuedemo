@@ -61,6 +61,9 @@ export default {
    * @param data
    */
   getRouters({ commit }, data) {
+    /**
+     * 此处可以通过权限过滤不需要展示的路由，返回一个新的路由列表
+     */
     const routers = basicRoutes.concat(asyncRoutes)
     commit('SET_ROUTERS', routers)
   }

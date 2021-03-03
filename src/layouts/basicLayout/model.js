@@ -5,8 +5,8 @@ const state = {
 }
 
 const mutations = {
-  SET_COLLAPSED_STATUS: state => {
-    state.collapsed = !state.collapsed
+  SET_COLLAPSED_STATUS: (state, data) => {
+    state.collapsed = data
     setLocalStorage(collapsed, state.collapsed)
   }
 }
