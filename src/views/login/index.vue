@@ -22,8 +22,8 @@
 import { defineComponent, reactive, watch, ref, onMounted } from 'vue'
 import { message } from 'ant-design-vue'
 import { useStore } from 'vuex'
-import FormPanel from '@/components/FormPanel/index.vue'
-import GVerify from '@/plug/GVerify';
+import { FormPanel } from '@/components/index'
+import { GVerify } from '@/plugins/index';
 import router from '@/router';
 
 const renderForm = {

@@ -6,8 +6,8 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref, reactive, watch } from 'vue';
-import FormPanel from '@/components/FormPanel/index.vue'
+import { defineComponent, ref, watch } from 'vue';
+import { FormPanel } from '@/components/index'
 
 const userModalColumns = {
   name: {
