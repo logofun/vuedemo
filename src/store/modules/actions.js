@@ -25,10 +25,10 @@ export default {
    * @param data
    * @return {Promise<unknown>}
    */
-  login({ commit }, data) {
+  login({ commit }, data = {}) {
     return new Promise(resolve => {
       commit('SET_USER_INFO', {
-        userName: 'admin'
+        userName: data.name || 'admin'
       })
       resolve()
     })

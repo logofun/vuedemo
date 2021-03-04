@@ -147,8 +147,10 @@ export default defineComponent({
       if (data.id) {
         await updateUser({
           id: data.id,
-          name: data.name,
-          email: data.email
+          data: {
+            name: data.name,
+            email: data.email
+          }
         })
         message.success('更新成功')
       } else {

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <a-modal v-model:visible="visible" :title="title" @ok="onOk">
-      <form-panel ref="formPanel" :render-form="userModalColumns" :rules="userModalRules" :is-show-save-btn="false" v-model:value="formData" />
+    <a-modal v-model:visible="visible" :title="title" @ok="onOk" forceRender>
+      <form-panel ref="formPanel" :render-form="userModalColumns" :rules="userModalRules" :is-show-save-btn="false" />
     </a-modal>
   </div>
 </template>
@@ -26,6 +26,21 @@ const userModalColumns = {
   }
 }
 
+const userModalRules = {
+  name: [
+    {
+      required: true,
+      message: '请输入用户名',
+    },
+  ],
+  email: [
+    {
+      required: true,
+      message: '请输入邮箱',
+    },
+  ]
+}
+
 export default defineComponent({
   components: {
     FormPanel
@@ -34,26 +49,7 @@ export default defineComponent({
     const visible = ref(false)
     const title = ref('新增')
     const formPanel = ref()
-    let formData = reactive({
-      name: '',
-      email: ''
-    })
-
-    const userModalRules = reactive({
-      name: [
-        {
-          required: true,
-          message: '请输入用户名',
-        },
-      ],
-      email: [
-        {
-          required: true,
-          message: '请输入邮箱',
-        },
-      ]
-    })
-
+    const currId = ref('')
     /**
      * 显示弹层并回显表单值
      */
@@ -61,9 +57,12 @@ export default defineComponent({
       visible.value = status
       data.topTitle && (title.value = data.topTitle)
       if (data.data) {
+        currId.value = data.data['id']
         Object.keys(data.data).forEach(key => {
-          formData[key] = data.data[key]
+          formPanel.value.setFieldValue(key, data.data[key])
         })
+      } else {
+        currId.value = ''
       }
     }
 
@@ -72,8 +71,11 @@ export default defineComponent({
      */
     const onOk = async () => {
       try {
-        await formPanel.value.validate()
-        emit('ok', formData)
+        const data = await formPanel.value.validate()
+        emit('ok', {
+          ...data,
+          id: currId.value
+        })
       } catch (e) {}
     }
 
@@ -92,7 +94,6 @@ export default defineComponent({
       visible,
       title,
       formPanel,
-      formData,
       showModal,
       onOk
     };
