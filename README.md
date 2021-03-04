@@ -14,11 +14,11 @@ vite2+vue3+ant-design-vue2搭建的一个后台管理系统简易模板
 │  │  ├─ less                               // 公共less
 │  │  └─ images                             // 图片文件
 │  ├─ components                            // 公共组件
-│  │  ├─ FormPanel
+│  │  ├─ FormPanel                          // 表单组件
 │  │  │	 └─ index.vue
-│  │  ├─ SearchPanel
+│  │  ├─ SearchPanel                        // 筛选组件
 │  │  │	 └─ index.vue
-│  │  ├─ TablePanel
+│  │  ├─ TablePanel                         // 表格组件
 │  │  │	 └─ index.vue
 │  │  └─ index.js                           // 组件集合引用文件
 │  ├─ plugins                               // 自定义插件
@@ -28,7 +28,7 @@ vite2+vue3+ant-design-vue2搭建的一个后台管理系统简易模板
 │  │  ├─ components                         // 页面公用组件
 │  │  ├─ users                              // users模块为例目录
 │  │  │  ├─ components                      // users模块组件
-│  │  │  └─ index.vue                       // 对应路由: /users
+│  │  │  └─ index.vue                       // 对应路由: /users/index
 │  │  │  └─ list.vue                        // 对应路由: /users/list
 │  │  │  └─ info.vue                        // 对应路由: /users/info
 │  │  │  └─ model.js                        // users模块vuex数据
@@ -75,6 +75,7 @@ or
 yarn build
 
 # 编译后预览
+
 yarn build && yarn serve
 ```
 
