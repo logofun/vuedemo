@@ -1,6 +1,6 @@
 export default {
   orderNo: 1,
-  path: '/home',
+  path: '',
   name: 'home',
   component: () => import('@/layouts/basicLayout/index.vue'),
   hideChildrenInMenu: true,
@@ -8,12 +8,12 @@ export default {
     icon: 'HomeOutlined',
     title: '首页',
   },
-  redirect: '/home/welcome',
+  redirect: '/index',
   children: [
     {
-      path: '/home/welcome',
-      name: 'homeWelcome',
-      component: () => import('@/views/home/welcome.vue'),
+      path: '/index',
+      name: 'index',
+      component: () => import('@/views/index/index.vue'),
       meta: {}
     }
   ]

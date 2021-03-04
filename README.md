@@ -28,7 +28,7 @@ vite2+vue3+ant-design-vue2搭建的一个后台管理系统简易模板
 │  │  ├─ components                         // 页面公用组件
 │  │  ├─ users                              // users模块为例目录
 │  │  │  ├─ components                      // users模块组件
-│  │  │  └─ index.vue                       // 对应路由: /users/index
+│  │  │  └─ index.vue                       // 对应路由: /users
 │  │  │  └─ list.vue                        // 对应路由: /users/list
 │  │  │  └─ info.vue                        // 对应路由: /users/info
 │  │  │  └─ model.js                        // users模块vuex数据

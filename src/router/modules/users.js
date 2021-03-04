@@ -1,6 +1,6 @@
 export default {
   orderNo: 2,
-  path: '/users',
+  path: '',
   name: 'users',
   component: () => import('@/layouts/basicLayout/index.vue'),
   meta: {

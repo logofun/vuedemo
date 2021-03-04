@@ -11,7 +11,7 @@ export const asyncRoutes = [...routeModuleList]
 export const RootRoute = {
   path: '/',
   name: 'Root',
-  redirect: '/home/welcome',
+  redirect: '/index',
   hide: true
 };
 
