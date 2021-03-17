@@ -179,7 +179,7 @@ export default defineComponent({
      * 点击搜索 请求table列表数据接口
      */
     const onSearch = (data) => {
-      refTablePanel.value.run({
+      refTablePanel.value.featTable({
         ...data,
         page: 1
       })

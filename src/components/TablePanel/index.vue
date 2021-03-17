@@ -36,7 +36,8 @@ export default defineComponent({
     const columns = props.columns;
     const dataSource = ref([])
     const pagination = reactive({
-      total: 0
+      total: 0,
+      current: 1
     });
     /**
      * table 数据请求
@@ -78,13 +79,24 @@ export default defineComponent({
       });
     };
 
+    /**
+     * 请求table数据
+     * @param params
+     */
+    const featTable = params => {
+      if (params.hasOwnProperty('page')) {
+        pagination.current = params.page
+      }
+      run(params)
+    }
+
     return {
       dataSource,
       pagination,
       loading,
       columns,
       handleTableChange,
-      run
+      featTable
     };
   },
 });
