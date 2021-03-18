@@ -77,6 +77,12 @@ yarn build
 # 编译后预览
 
 yarn build && yarn serve
+
+# 创建页面(自动生成视图页面及路由)
+yarn create-view
+
+# 移除页面(自动移除视图页面及路由)
+yarn del-view
 ```
 
 ## 交流 & 提问

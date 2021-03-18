@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "create-view": "node utils/create.js",
+    "del-view": "node utils/del.js"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",

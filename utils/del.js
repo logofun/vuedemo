@@ -12,7 +12,7 @@ const rl = readline.createInterface({
 })
 
 if (!dir) {
-  rl.question(`请输入需要删除的试图目录名： `, (name) => {
+  rl.question(`请输入需要删除的视图目录名： `, (name) => {
     del(name)
   })
 } else {
