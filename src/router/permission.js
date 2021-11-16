@@ -18,7 +18,7 @@ export const setPermissionRouter = (router) => {
        */
       router.options.routes.push(...store.state.routers)
       isNeedGetRoutes = false
-      next({...to, replace: true})
+      next({ ...to, replace: true })
     } else {
       next()
     }

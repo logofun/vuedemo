@@ -83,11 +83,14 @@ export default defineComponent({
      * 请求table数据
      * @param params
      */
-    const featTable = params => {
+    const featTable = (params = {}) => {
       if (params.hasOwnProperty('page')) {
         pagination.current = params.page
       }
-      run(params)
+      run({
+        per_page: pagination.pageSize,
+        page: pagination.current
+      })
     }
 
     return {
@@ -95,7 +98,6 @@ export default defineComponent({
       pagination,
       loading,
       columns,
-      run,
       handleTableChange,
       featTable
     };

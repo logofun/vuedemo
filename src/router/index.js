@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import {basicRoutes} from './routes'
-import {setPermissionRouter} from './permission'
+import { basicRoutes } from './routes'
+import { setPermissionRouter } from './permission'
 
 const router = createRouter({
   history: createWebHistory(),

@@ -157,7 +157,7 @@ export default defineComponent({
         message.success('创建成功')
       }
       userModal.value.showModal(false)
-      refTablePanel.value.run({ page: 1 })
+      refTablePanel.value.featTable({ page: 1 })
     }
 
     const onDelete = (data) => {
@@ -170,7 +170,7 @@ export default defineComponent({
         onOk: async () => {
           await delUser({id: data.id})
           message.success('删除成功')
-          refTablePanel.value.run()
+          refTablePanel.value.featTable()
         },
       })
     }

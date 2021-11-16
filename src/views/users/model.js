@@ -10,7 +10,7 @@ export default {
     }
   },
   actions: {
-    async setMsg({commit}, data) {
+    async setMsg({ commit }, data) {
       await sleep(2)
       commit('SET_MSG', data)
     }
