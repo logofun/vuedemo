@@ -3,7 +3,7 @@
     <a-form>
       <a-row :gutter="10">
         <template v-for="(item, index) in renders" >
-          <a-col :span="6" v-if="isUpStatus ? (isUpStatus && (index < 3)) : true">
+          <a-col :key="index" :span="6" v-if="isUpStatus ? (isUpStatus && (index < 3)) : true">
             <a-form-item :label="item.label" :labelCol="{ span: 8}" :wrapperCol="{ span: 16 }" :style="{ width: '100%', marginBottom: '8px' }">
               <template v-if="item.type === 'input'">
                 <a-input v-bind="{...item.props}" v-model:value="formData[item.key]" />
