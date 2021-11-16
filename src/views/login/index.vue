@@ -73,7 +73,7 @@ export default defineComponent({
 
     const onLogin = async (data) => {
       if (!(verifyCode).validate(formData.code)) {
-        message.success('验证码错误')
+        message.error('验证码错误')
         return;
       }
       await store.dispatch('login', data)

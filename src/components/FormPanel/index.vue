@@ -1,6 +1,6 @@
 <template>
   <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-item :label="item.label" v-bind="validateInfos[key]" v-for="(item, key) in renderForm">
+    <a-form-item :label="item.label" v-bind="validateInfos[key]" v-for="(item, key) in renderForm" :key="key">
       <template v-if="item.scopedSlots && item.scopedSlots.customRender">
         <slot :name="item.scopedSlots.customRender" v-bind="{...item.props}"></slot>
       </template>

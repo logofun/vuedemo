@@ -95,6 +95,7 @@ export default defineComponent({
       pagination,
       loading,
       columns,
+      run,
       handleTableChange,
       featTable
     };
