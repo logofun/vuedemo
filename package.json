@@ -1,6 +1,6 @@
 {
-  "name": "foolAdminTemplate",
-  "version": "0.0.0",
+  "name": "fool-admin-template",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

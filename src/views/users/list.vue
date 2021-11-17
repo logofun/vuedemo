@@ -19,9 +19,9 @@
   </div>
 </template>
 <script>
-import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
-import {defineComponent, ref, reactive, watch, createVNode} from 'vue';
 import moment from 'moment'
+import {defineComponent, ref, reactive, watch, createVNode} from 'vue';
+import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
 import { SearchPanel, TablePanel } from '@/components/index'
 import UserModal from '@/views/users/components/UserModal.vue';
 import {addUser, updateUser, delUser} from '@/views/users/service';

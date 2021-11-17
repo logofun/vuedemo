@@ -89,7 +89,8 @@ export default defineComponent({
       }
       run({
         per_page: pagination.pageSize,
-        page: pagination.current
+        page: pagination.current,
+        ...params,
       })
     }
 
