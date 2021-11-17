@@ -1,9 +1,12 @@
 # foolAdminTemplate
 
-vite2+vue3+ant-design-vue3搭建的一个后台管理系统简易模板。对表格组件、表单组件进行二次封装、新增筛选组件，通过json数据配置即可，简单易用。
+vite2+vue3+ant-design-vue3搭建的一个后台管理系统, 拿来即用，快速搭建页面。
 
 ## 简介
 
+* json数据配置表格、表单
+
+* 命令快速构建路由及页面
 
 ### 文件夹结构
 ```
@@ -80,9 +83,13 @@ yarn build && yarn serve
 
 # 创建页面(自动生成视图页面及路由)
 yarn create-view
+or
+npm run create-view
 
 # 移除页面(自动移除视图页面及路由)
 yarn del-view
+or
+npm run del-view
 ```
 
 ## 交流 & 提问

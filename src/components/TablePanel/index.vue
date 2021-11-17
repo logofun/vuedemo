@@ -1,50 +1,53 @@
 <template>
   <div :class="['padding', style]">
     <a-table
-        :columns="columns"
-        :row-key="record => record.id"
-        :data-source="dataSource"
-        :pagination="pagination"
-        :loading="loading"
-        @change="handleTableChange"
+      :columns="columns"
+      :row-key="(record) => record.id"
+      :data-source="dataSource"
+      :pagination="pagination"
+      :loading="loading"
+      @change="handleTableChange"
     >
-      <template #[item]="data" v-for="item in Object.keys($slots)">
-        <slot :name="item" v-bind="data"></slot>
+    <template #headerCell="{ column }">
+      <slot name="headerCell" v-bind="{ column }"></slot>
+    </template>
+      <template #bodyCell="{ column, text, record }">
+        <slot name="bodyCell" v-bind="{ column, text, record }"></slot>
       </template>
     </a-table>
   </div>
 </template>
 
 <script>
-import { useRequest } from 'vue-request';
-import { defineComponent, reactive, ref } from 'vue';
-import fetch from '@/utils/fetch';
+import { useRequest } from "vue-request";
+import { defineComponent, reactive, ref } from "vue";
+import fetch from "@/utils/fetch";
 
 export default defineComponent({
   props: {
     request: String,
     columns: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
-    style: String
+    style: String,
   },
-  setup(props) {
+  setup(props, context) {
     /**
      * 定义变量
      */
     const columns = props.columns;
-    const dataSource = ref([])
+    const dataSource = ref([]);
     const pagination = reactive({
       total: 0,
-      current: 1
+      current: 1,
     });
     /**
      * table 数据请求
      * @param params
      * @return {Promise<unknown>}
      */
-    const queryData = params => fetch.get(props.request, params);
+    const queryData = (params) => fetch.get(props.request, params);
     let { run, loading } = useRequest(queryData, {
       defaultParams: [
         {
@@ -52,15 +55,15 @@ export default defineComponent({
         },
       ],
       onError: () => {
-        loading = false
+        loading = false;
       },
       onSuccess: (res) => {
         /**
          * 此处可通过不同项目接口请求返回的列表数据进行修改
          */
-        dataSource.value = res.data
-        pagination.total = res.meta.total
-      }
+        dataSource.value = res.data;
+        pagination.total = res.meta.total;
+      },
     });
     /**
      * 点击切换分页
@@ -84,15 +87,15 @@ export default defineComponent({
      * @param params
      */
     const featTable = (params = {}) => {
-      if (params.hasOwnProperty('page')) {
-        pagination.current = params.page
+      if (params.hasOwnProperty("page")) {
+        pagination.current = params.page;
       }
       run({
         per_page: pagination.pageSize,
         page: pagination.current,
         ...params,
-      })
-    }
+      });
+    };
 
     return {
       dataSource,
@@ -100,7 +103,7 @@ export default defineComponent({
       loading,
       columns,
       handleTableChange,
-      featTable
+      featTable,
     };
   },
 });

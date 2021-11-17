@@ -1,7 +1,9 @@
 <template>
   <div class="breadcrumb-layout">
     <a-breadcrumb>
-      <a-breadcrumb-item v-for="(item, index) in list">{{ item.meta.title }}</a-breadcrumb-item>
+      <template v-for="item in list">
+        <a-breadcrumb-item  :key="item" v-if="item.meta.title">{{ item.meta.title }}</a-breadcrumb-item>
+      </template>
     </a-breadcrumb>
   </div>
 </template>
@@ -14,7 +16,6 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const list = computed(() => router.currentRoute.value.matched)
-
     return {
       list
     }

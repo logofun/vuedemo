@@ -1,7 +1,7 @@
 <template>
   <div>
     {{data.message}}
-      <component :is="$antIcons['TransactionOutlined']" :style="{ color: 'red' }" rotate="60" :spin="true" />
+      <component :is="$antIcons['TransactionOutlined']" :style="{ color: 'red' }" :rotate="60" :spin="true" />
   </div>
 </template>
 
