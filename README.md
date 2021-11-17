@@ -1,6 +1,6 @@
 # foolAdminTemplate
 
-vite2+vue3+ant-design-vue2搭建的一个后台管理系统简易模板
+vite2+vue3+ant-design-vue3搭建的一个后台管理系统简易模板。对表格组件、表单组件进行二次封装、新增筛选组件，通过json数据配置即可，简单易用。
 
 ## 简介
 
