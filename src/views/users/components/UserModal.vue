@@ -11,39 +11,29 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref, watch, onMounted, reactive } from "vue";
 import { FormPanel } from "@/components/index";
-
-const userModalColumns = {
-  name: {
-    type: "input",
-    label: "用户名",
-    props: {
-      placeholder: "请输入用户名",
-    },
-  },
-  email: {
-    type: "input",
-    label: "邮箱",
-    props: {
-      placeholder: "请输入邮箱",
-    },
-  },
-};
+import { sysRoleList } from "../service";
 
 const userModalRules = {
-  name: [
+  username: [
     {
       required: true,
       message: "请输入用户名",
     },
   ],
-  email: [
+  role_id: [
     {
       required: true,
-      message: "请输入邮箱",
+      message: "请选择角色",
     },
   ],
+  sex: [
+    {
+      required: true,
+      message: "请选择性别",
+    },
+  ]
 };
 
 export default defineComponent({
@@ -55,6 +45,69 @@ export default defineComponent({
     const title = ref("新增");
     const formPanel = ref();
     const currId = ref("");
+
+    const userModalColumns = reactive({
+      username: {
+        type: "input",
+        label: "用户名",
+        props: {
+          placeholder: "请输入用户名",
+        },
+      },
+      role_id: {
+        type: "select",
+        label: "角色",
+        props: {
+          placeholder: "请选择角色",
+          options: [],
+        },
+      },
+      sex: {
+        type: "select",
+        label: "性别",
+        props: {
+          placeholder: "请选择性别",
+          options: [
+            { label: "男", value: 1 },
+            { label: "女", value: 2 },
+          ],
+        },
+      },
+      password: {
+        type: "password",
+        label: "密码",
+        props: {
+          placeholder: "请输入密码",
+        },
+      },
+      mobile: {
+        type: "input",
+        label: "电话",
+        props: {
+          placeholder: "请输入电话",
+        },
+      },
+      email: {
+        type: "input",
+        label: "邮箱",
+        props: {
+          placeholder: "请输入邮箱",
+        },
+      },
+      birthday: {
+        type: "datePicker",
+        label: "生日",
+        props: {
+          placeholder: "请选择生日",
+        },
+      },
+    });
+
+    onMounted(async () => {
+      const { data } = await sysRoleList();
+      userModalColumns.role_id.props.options = data.map(value => ({ label: value.role_name, value: value.id }))
+    });
+
     /**
      * 显示弹层并回显表单值
      */
@@ -76,7 +129,7 @@ export default defineComponent({
      */
     const onOk = async () => {
       try {
-        const data = await formPanel.value.validate();
+        const data = await formPanel.value.onSubmit();
         emit("ok", {
           ...data,
           id: currId.value,

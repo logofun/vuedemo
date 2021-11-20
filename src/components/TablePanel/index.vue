@@ -51,7 +51,7 @@ export default defineComponent({
     let { run, loading } = useRequest(queryData, {
       defaultParams: [
         {
-          per_page: 10,
+          pageSize: 10,
         },
       ],
       onError: () => {
@@ -61,8 +61,8 @@ export default defineComponent({
         /**
          * 此处可通过不同项目接口请求返回的列表数据进行修改
          */
-        dataSource.value = res.data;
-        pagination.total = res.meta.total;
+        dataSource.value = res.data.list;
+        pagination.total = res.data.total;
       },
     });
     /**
@@ -74,7 +74,7 @@ export default defineComponent({
     const handleTableChange = (pag, filters, sorter) => {
       Object.assign(pagination, pag);
       run({
-        per_page: pagination.pageSize,
+        pageSize: pagination.pageSize,
         page: pagination.current,
         sortField: sorter.field,
         sortOrder: sorter.order,
@@ -91,7 +91,7 @@ export default defineComponent({
         pagination.current = params.page;
       }
       run({
-        per_page: pagination.pageSize,
+        pageSize: pagination.pageSize,
         page: pagination.current,
         ...params,
       });

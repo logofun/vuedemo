@@ -7,18 +7,24 @@
     >
       <a-button @click="setUserModalVisible('新增')">新增</a-button>
     </search-panel>
-    <table-panel ref="refTablePanel" :columns="columns" request="users">
+    <table-panel ref="refTablePanel" :columns="columns" request="api/user/list">
       <template #bodyCell="{ column, text, record }">
-        <template v-if="column.key === 'update_time'">
-          {{ filterTime(text) }}
+        <template v-if="column.key === 'sex'">
+          {{ sexObject[text] }}
         </template>
         <template v-if="column.key === 'action'">
-           <span>
-            <router-link :to="{name: 'usersInfo', query: {id: record.id}}">查看</router-link>
-            <a-divider type="vertical" />
-            <a @click="setUserModalVisible('修改', record)">修改</a>
-            <a-divider type="vertical" />
-            <a @click="onDelete(record)">删除</a>
+          <span>
+            <router-link :to="{ name: 'usersInfo', query: { id: record.id } }">
+              查看
+            </router-link>
+            <a-divider type="vertical" v-if="+record.id !== 1" />
+            <a
+              @click="setUserModalVisible('修改', record)"
+              v-if="+record.id !== 1"
+              >修改</a
+            >
+            <a-divider type="vertical" v-if="+record.id !== 1" />
+            <a @click="onDelete(record)" v-if="+record.id !== 1">删除</a>
           </span>
         </template>
       </template>
@@ -27,103 +33,67 @@
   </div>
 </template>
 <script>
-import moment from "moment";
-import { defineComponent, ref, reactive, watch, createVNode } from "vue";
+import dayjs from "dayjs";
+import {
+  defineComponent,
+  ref,
+  reactive,
+  watch,
+  createVNode,
+  onMounted,
+  toRaw,
+} from "vue";
 import { ExclamationCircleOutlined } from "@ant-design/icons-vue";
 import { SearchPanel, TablePanel } from "@/components/index";
 import UserModal from "@/views/users/components/UserModal.vue";
-import { addUser, updateUser, delUser } from "@/views/users/service";
+import { userAdd, userUpdate, userDel } from "@/views/users/service";
 import { message, Modal } from "ant-design-vue";
+import { sysRoleList } from "./service";
+
+const sexObject = {
+  1: "男",
+  2: "女",
+};
 
 const columns = [
   {
     title: "用户名",
-    dataIndex: "name",
+    dataIndex: "username",
     sorter: true,
-    width: "20%",
+  },
+  {
+    title: "角色",
+    key: "role_name",
+    dataIndex: ["sys_role", "role_name"],
+  },
+  {
+    title: "性别",
+    key: "sex",
+    dataIndex: "sex",
+  },
+  {
+    title: "电话",
+    dataIndex: "mobile",
   },
   {
     title: "邮箱",
     dataIndex: "email",
   },
   {
-    title: "更新时间",
-    key: "update_time",
-    dataIndex: "update_time",
+    title: "出生日期",
+    key: "birthday",
+    dataIndex: "birthday",
   },
   {
     title: "创建时间",
-    dataIndex: "create_time",
+    key: "createdAt",
+    dataIndex: "createdAt",
   },
   {
     title: "操作",
     key: "action",
   },
 ];
-
-const renderForm = {
-  status: {
-    label: "任务状态",
-    type: "select",
-    props: {
-      allowClear: true,
-      placeholder: "请选择任务状态",
-      options: [
-        { label: "未开始", value: 0 },
-        { label: "进行中", value: 1 },
-        { label: "已结束", value: 2 },
-      ],
-    },
-  },
-  is_success: {
-    label: "成功状态",
-    type: "select",
-    props: {
-      allowClear: true,
-      placeholder: "请选择成功状态",
-      options: [
-        { label: "成功", value: 1 },
-        { label: "失败", value: 0 },
-      ],
-    },
-  },
-  product_code: {
-    label: "产品",
-    type: "select",
-    props: {
-      allowClear: true,
-      placeholder: "请选择产品",
-      options: [
-        { label: "零食类", value: 1 },
-        { label: "生鲜类", value: 0 },
-      ],
-    },
-  },
-  task_no: {
-    label: "任务编号",
-    type: "input",
-    props: {
-      allowClear: true,
-      placeholder: "请输入任务编号",
-    },
-  },
-  template_code: {
-    label: "日期",
-    type: "datePicker",
-    props: {
-      allowClear: true,
-      placeholder: "请选择日期",
-    },
-  },
-  time: {
-    label: "日期范围",
-    type: "rangePicker",
-    props: {
-      allowClear: true,
-      placeholder: ["开始日期", "结束日期"],
-    },
-  },
-};
 
 export default defineComponent({
   components: {
@@ -135,11 +105,86 @@ export default defineComponent({
     const refTablePanel = ref();
     const userModal = ref();
     let formData = reactive({});
+    const renderForm = reactive({
+      username: {
+        label: "用户名",
+        type: "input",
+        props: {
+          allowClear: true,
+          placeholder: "请输入用户名",
+        },
+      },
+      role_id: {
+        label: "角色",
+        type: "select",
+        props: {
+          allowClear: true,
+          placeholder: "请选择角色",
+          options: [],
+        },
+      },
+      sex: {
+        label: "性别",
+        type: "select",
+        props: {
+          allowClear: true,
+          placeholder: "请选择性别",
+          options: (() => {
+            const arr = [];
+            Object.keys(sexObject).forEach((key) => {
+              arr.push({ label: sexObject[key], value: key });
+            });
+            return arr;
+          })(),
+        },
+      },
+      mobile: {
+        label: "电话",
+        type: "input",
+        props: {
+          allowClear: true,
+          placeholder: "请选择电话",
+        },
+      },
+      birthday: {
+        label: "出生日期",
+        type: "rangePicker",
+        props: {
+          allowClear: true,
+          placeholder: ["开始日期", "结束日期"],
+        },
+      },
+    });
+
+    onMounted(async () => {
+      const { data } = await sysRoleList();
+      renderForm.role_id.props.options = data.map((value) => ({
+        label: value.role_name,
+        value: value.id,
+      }));
+    });
+
     /**
      * 显示UserModal组件
      */
     const setUserModalVisible = (topTitle, data) => {
-      userModal.value.showModal(true, { topTitle, data });
+      userModal.value.showModal(true, {
+        topTitle,
+        data:
+          topTitle === "修改"
+            ? {
+                id: data.id,
+                username: data.username,
+                sex: data.sex,
+                role_id: data.role_id,
+                mobile: data.mobile,
+                email: data.email,
+                birthday: data.birthday
+                  ? dayjs(data.birthday, "YYYY-MM-DD")
+                  : "",
+              }
+            : {},
+      });
     };
 
     /**
@@ -147,16 +192,17 @@ export default defineComponent({
      */
     const onOk = async (data) => {
       if (data.id) {
-        await updateUser({
+        await userUpdate({
           id: data.id,
-          data: {
-            name: data.name,
-            email: data.email,
-          },
+          ...data,
+          birthday: dayjs(data.birthday).format("YYYY-MM-DD"),
         });
         message.success("更新成功");
       } else {
-        await addUser(data);
+        await userAdd({
+          ...data,
+          birthday: dayjs(data.birthday).format("YYYY-MM-DD"),
+        });
         message.success("创建成功");
       }
       userModal.value.showModal(false);
@@ -167,11 +213,11 @@ export default defineComponent({
       Modal.confirm({
         title: "提示",
         icon: createVNode(ExclamationCircleOutlined),
-        content: `您确定要删除用户【${data.name}】吗?`,
+        content: `您确定要删除用户【${data.username}】吗?`,
         cancelText: "取消",
         okText: "确定",
         onOk: async () => {
-          await delUser({ id: data.id });
+          await userDel({ id: data.id });
           message.success("删除成功");
           refTablePanel.value.featTable();
         },
@@ -182,17 +228,16 @@ export default defineComponent({
      * 点击搜索 请求table列表数据接口
      */
     const onSearch = (data) => {
+      const params = { ...data }
+      if (data.birthday) {
+        params.birthdayStart = dayjs(data.birthday[0]).format('YYYY-MM-DD')
+        params.birthdayEnd =  dayjs(data.birthday[1]).format('YYYY-MM-DD')
+        delete params.birthday
+      }
       refTablePanel.value.featTable({
-        ...data,
+        ...params,
         page: 1,
       });
-    };
-
-    /**
-     * 处理时间显示 vue3已经移除filters
-     */
-    const filterTime = (time) => {
-      return moment(time).format("YYYY-MM-DD HH:mm:ss");
     };
 
     /**
@@ -203,13 +248,13 @@ export default defineComponent({
     });
 
     return {
+      sexObject,
       columns,
       renderForm,
       formData,
       refTablePanel,
       userModal,
       onSearch,
-      filterTime,
       setUserModalVisible,
       onOk,
       onDelete,

@@ -1,7 +1,7 @@
 import router from '@/router';
 import { message } from 'ant-design-vue';
 import { sleep } from '@/utils'
-import { basicRoutes, asyncRoutes } from '@/router/routes'
+import { basicRoutes, asyncRoutes } from '@/router/routes';
 
 export default {
   /**
@@ -27,9 +27,7 @@ export default {
    */
   login({ commit }, data = {}) {
     return new Promise(resolve => {
-      commit('SET_USER_INFO', {
-        userName: data.name || 'admin'
-      })
+      commit('SET_USER_INFO', data)
       resolve()
     })
   },

@@ -6,7 +6,7 @@
       <a-dropdown class="user-info">
         <div>
           <img src="../../../assets/images/default-head.png" alt="" />
-          <span>{{ userInfo.userName }}</span>
+          <span>{{ userInfo.userInfo && userInfo.userInfo.username }}</span>
         </div>
         <template #overlay>
           <a-menu>

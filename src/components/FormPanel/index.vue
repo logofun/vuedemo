@@ -29,6 +29,9 @@
             v-bind="{ ...item.props }"
           />
         </template>
+        <template v-if="item.type === 'datePicker'">
+          <a-date-picker v-model:value="modelRef[key]" v-bind="{ ...item.props }" />
+        </template>
       </template>
     </a-form-item>
     <a-form-item
@@ -81,7 +84,7 @@ export default defineComponent({
      */
     let modeRefTemp = {};
     Object.keys(renderForm).forEach((key) => {
-      modeRefTemp[key] = defaultValue[key] || "";
+      modeRefTemp[key] = defaultValue[key] || undefined;
     });
     const modelRef = reactive(modeRefTemp);
     const rulesRef = reactive(rules);

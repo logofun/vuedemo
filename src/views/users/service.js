@@ -1,7 +1,9 @@
 import fetch from '@/utils/fetch';
 
-export const addUser = params => fetch.post('users', params)
+export const userAdd = params => fetch.post('api/user/add', params)
 
-export const updateUser = params => fetch.put(`users/${params.id}`, params.data)
+export const userUpdate = params => fetch.post('api/user/update', params)
 
-export const delUser = params => fetch.del(`users/${params.id}`, params.data)
+export const userDel = params => fetch.get('api/user/del', params)
+
+export const sysRoleList = params => fetch.get('api/sysRole/list', params)

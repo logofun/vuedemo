@@ -25,9 +25,10 @@ import { useStore } from 'vuex'
 import { FormPanel } from '@/components/index'
 import { GVerify } from '@/plugins/index'
 import router from '@/router'
+import { userLogin } from './service'
 
 const renderForm = {
-  name: {
+  username: {
     type: 'input',
     label: '用户名',
     props: {
@@ -71,11 +72,12 @@ export default defineComponent({
     const formPanel = ref()
     let verifyCode = null;
 
-    const onLogin = async (data) => {
+    const onLogin = async (params) => {
       if (!(verifyCode).validate(formData.code)) {
         message.error('验证码错误')
         return;
       }
+      const { data } = await userLogin(params)
       await store.dispatch('login', data)
       message.success('登录成功')
       router.push('/')

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { message } from 'ant-design-vue';
-
+import { userInfo, getLocalStorage } from '@/utils/storage'
+import store from '@/store';
 /**
  * 创建axios实例
  */
 const httpService = axios.create({
-  baseURL: 'http://public-api-v1.aspirantzhang.com/',
+  baseURL: 'http://www.yinchunyu.com/',
   timeout: 90000,
   headers: {'Content-Type': 'application/json'}
 });
@@ -16,9 +17,10 @@ const httpService = axios.create({
 httpService.interceptors.request.use(
   (config) => {
     // 让每个请求携带token
-    // if (UserModule.token) {
-    //   config.headers.Authorization = UserModule.token;
-    // }
+    const userInfoData = getLocalStorage(userInfo)
+    if (userInfoData.token) {
+      config.headers.authorization = userInfoData.token;
+    }
     return config;
   },
   /**
@@ -40,7 +42,13 @@ httpService.interceptors.response.use(
    */
   (error) => {
     if (error && error.response) {
-      error.message = error.response.data.message;
+      if (error.response.status === 511) {
+        store.dispatch('logout', {
+          msg: '即将跳转登录页...',
+          time: 1
+        })
+      }
+      error.message = error.response.data.msg;
     } else {
       error.message = '连接到服务器失败';
     }
