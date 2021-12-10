@@ -152,7 +152,7 @@ export default {
     background-size: auto 100%;
 
     &.mini {
-      background: url('../../../assets/images/logo-mini.png') no-repeat center center;
+      background: url('../../../assets/images/logo.png') no-repeat center center;
       background-size: 80% auto;
     }
   }

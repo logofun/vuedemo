@@ -6,7 +6,7 @@ import store from '@/store';
  * 创建axios实例
  */
 const httpService = axios.create({
-  baseURL: 'http://www.yinchunyu.com/',
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 90000,
   headers: {'Content-Type': 'application/json'}
 });

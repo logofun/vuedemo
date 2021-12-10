@@ -50,6 +50,10 @@ import { Form } from 'ant-design-vue';
 
 const useForm = Form.useForm;
 export default defineComponent({
+  components: {
+    [Form.name]: Form,
+    [Form.Item.name]: Form.Item
+  },
   props: {
     renderForm: {
       type: Object,

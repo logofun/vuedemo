@@ -20,11 +20,11 @@
 
 <script>
 import { defineComponent, reactive, watch, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router';
 import { message } from 'ant-design-vue'
 import { useStore } from 'vuex'
 import { FormPanel } from '@/components/index'
 import { GVerify } from '@/plugins/index'
-import router from '@/router'
 import { userLogin } from './service'
 
 const renderForm = {
@@ -32,14 +32,14 @@ const renderForm = {
     type: 'input',
     label: '用户名',
     props: {
-      placeholder: '请输入用户名'
+      placeholder: '用户名：admin'
     }
   },
   password: {
     type: 'password',
     label: '密码',
     props: {
-      placeholder: '请输入密码'
+      placeholder: '密码: admin'
     }
   },
   code: {
@@ -65,6 +65,7 @@ export default defineComponent({
     FormPanel
   },
   setup() {
+    const router = useRouter()
     const store = useStore()
     const formData = reactive({
       code: ''

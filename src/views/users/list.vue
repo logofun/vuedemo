@@ -7,7 +7,7 @@
     >
       <a-button @click="setUserModalVisible('新增')">新增</a-button>
     </search-panel>
-    <table-panel ref="refTablePanel" :columns="columns" request="api/user/list">
+    <table-panel ref="refTablePanel" :columns="columns" request="api/testUser/list">
       <template #bodyCell="{ column, text, record }">
         <template v-if="column.key === 'sex'">
           {{ sexObject[text] }}
