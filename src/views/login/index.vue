@@ -7,7 +7,7 @@
         :render-form="renderForm"
         :rules="rules"
         :isShowSaveBtn="false"
-        :wrapperCol="{span: 15}"
+        :wrapperCol="{ span: 15 }"
       >
         <template #code>
           <a-row>
@@ -26,7 +26,9 @@
         </template>
       </form-panel>
       <div class="login-button">
-        <a-button type="primary" block size="large" @click="onLogin">登 录</a-button>
+        <a-button type="primary" block size="large" @click="onLogin"
+          >登 录</a-button
+        >
       </div>
     </div>
   </div>
@@ -136,7 +138,7 @@ export default defineComponent({
       padding: 20px 0;
     }
     .login-button {
-      margin:40px 0 20px 0;
+      // margin:40px 0 20px 0;
       padding: 0 55px 0 49px;
     }
   }

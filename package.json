@@ -1,5 +1,5 @@
 {
-  "name": "fool-admin-template",
+  "name": "easy-admin-template",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
