@@ -1,5 +1,5 @@
 {
-  "name": "easy-admin-template",
+  "name": "vue-template-demo",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
