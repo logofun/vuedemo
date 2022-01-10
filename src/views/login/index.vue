@@ -10,6 +10,7 @@
         :wrapperCol="{ span: 15 }"
       >
         <template #code>
+          <!-- 上方#code是个具名插槽 -->
           <a-row>
             <a-col :span="12">
               <a-input
@@ -102,6 +103,9 @@ export default defineComponent({
       formPanel.value.setFieldValue("code", newValue.code);
     });
 
+    /*
+     * 使用 GVerify 将验证码绑定在 id="v_container" 的<div>框内
+     */
     onMounted(() => {
       verifyCode = new GVerify({
         id: "v_container",
