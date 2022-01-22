@@ -16,7 +16,7 @@ const files = {...layoutModules, ...viewModules}
 const modules = {}
 Object.keys(files).forEach((key) => {
   let strKey = key.replace('/model.js', '')
-  modules[strKey.substr(strKey.lastIndexOf('/') + 1)] = files[key].default
+  modules[strKey.substring(strKey.lastIndexOf('/') + 1)] = files[key].default
 })
 /**
  * 加入namespaced:true，用于解决vuex命名冲突，请勿修改。

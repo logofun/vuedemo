@@ -1,0 +1,11 @@
+{
+    "userInfo": {
+        "id": 25,
+        "username": "test",
+        "birthday": "2022-01-06",
+        "mobile": null,
+        "email": null,
+        "sex": 1
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsImlhdCI6MTY0MTkxMTI0OSwiZXhwIjoxNjQxOTE4NDQ5fQ.c2kJ76xcHUBEhqIkpoZmGeaVbYDLRIbHdmThO5xa-fQ"
+}
