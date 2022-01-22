@@ -12,7 +12,7 @@ import mutations from '@/store/modules/mutations';
 const layoutModules = import.meta.globEager('../layouts/**/model.js')
 const viewModules = import.meta.globEager('../views/**/model.js')
 const files = {...layoutModules, ...viewModules}
-
+console.log(files)
 const modules = {}
 Object.keys(files).forEach((key) => {
   let strKey = key.replace('/model.js', '')
