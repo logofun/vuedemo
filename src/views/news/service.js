@@ -6,3 +6,5 @@ import fetch from '@/utils/fetch';
  * @return {*}
  */
 export const xx = params => fetch.post('xx', params)
+
+export const newsList = params => fetch.get('api/role/list', params)
