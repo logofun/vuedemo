@@ -1,0 +1,15 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "data": {
+    "userInfo": {
+      "id": 1,
+      "username": "admin",
+      "birthday": "2021-11-23",
+      "mobile": null,
+      "email": null,
+      "sex": 1
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQyODU3NjgwLCJleHAiOjE2NDI4NjQ4ODB9.IldA7aUjxwRhKK-tXTHQFfUYFVCkop3_Xv6bo6k8j3Q"
+  }
+}

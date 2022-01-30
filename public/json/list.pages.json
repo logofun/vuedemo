@@ -1,0 +1,81 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "username": "admin",
+        "birthday": "2021-11-23",
+        "mobile": null,
+        "sex": 1,
+        "email": null,
+        "createdAt": "2021-12-10T14:29:50.000Z",
+        "updatedAt": "2021-12-10T06:35:33.000Z",
+        "role_id": 1,
+        "sys_role": { "role_name": "超级管理员" }
+      },
+      {
+        "id": 21,
+        "username": "111",
+        "birthday": "2022-01-11",
+        "mobile": "12312",
+        "sex": 1,
+        "email": "321231",
+        "createdAt": "2022-01-03T14:46:21.000Z",
+        "updatedAt": "2022-01-03T15:03:56.000Z",
+        "role_id": 2,
+        "sys_role": { "role_name": "普通用户" }
+      },
+      {
+        "id": 22,
+        "username": "3333",
+        "birthday": "2022-01-03",
+        "mobile": "23",
+        "sex": 2,
+        "email": "32",
+        "createdAt": "2022-01-03T15:04:03.000Z",
+        "updatedAt": "2022-01-03T15:04:22.000Z",
+        "role_id": 2,
+        "sys_role": { "role_name": "普通用户" }
+      },
+      {
+        "id": 23,
+        "username": "323",
+        "birthday": "2022-01-20",
+        "mobile": null,
+        "sex": 1,
+        "email": null,
+        "createdAt": "2022-01-03T15:04:14.000Z",
+        "updatedAt": "2022-01-03T15:04:14.000Z",
+        "role_id": 2,
+        "sys_role": { "role_name": "普通用户" }
+      },
+      {
+        "id": 24,
+        "username": "444",
+        "birthday": "2022-01-03",
+        "mobile": null,
+        "sex": 2,
+        "email": null,
+        "createdAt": "2022-01-03T15:04:29.000Z",
+        "updatedAt": "2022-01-03T15:04:29.000Z",
+        "role_id": 1,
+        "sys_role": { "role_name": "超级管理员" }
+      },
+      {
+        "id": 25,
+        "username": "test",
+        "birthday": "2022-01-06",
+        "mobile": null,
+        "sex": 1,
+        "email": null,
+        "createdAt": "2022-01-06T15:59:27.000Z",
+        "updatedAt": "2022-01-06T15:59:27.000Z",
+        "role_id": 1,
+        "sys_role": { "role_name": "超级管理员" }
+      }
+    ],
+    "total": 6
+  }
+}
