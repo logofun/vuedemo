@@ -82,6 +82,13 @@
     core-js "^3.8.0"
     nanopop "^2.1.0"
 
+"@tinymce/tinymce-vue@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.npmmirror.com/@tinymce/tinymce-vue/-/tinymce-vue-4.0.5.tgz#d95e69a1053e60bc537792e5ec4dd9c34399f45e"
+  integrity sha512-PutMhPVgR+NPeu20pvTmFBY+3zKwTJqK0JPDb6QuK8u1g6Av4RaiUVS58Rft6mhoxVE99tIofdr69wOH/X0swA==
+  dependencies:
+    tinymce "^5.5.0"
+
 "@types/lodash@^4.14.165":
   version "4.14.168"
   resolved "https://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.168.tgz?cache=0&sync_timestamp=1613379158193&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Flodash%2Fdownload%2F%40types%2Flodash-4.14.168.tgz#fe24632e79b7ade3f132891afff86caa5e5ce008"
@@ -837,6 +844,11 @@ supports-color@^6.1.0:
   integrity sha1-B2Srxpxj1ayELdSGfo0CXogN+PM=
   dependencies:
     has-flag "^3.0.0"
+
+tinymce@^5.5.0:
+  version "5.10.2"
+  resolved "https://registry.npmmirror.com/tinymce/-/tinymce-5.10.2.tgz#cf1ff01025909be26c64348509e6de8e70d58e1d"
+  integrity sha512-5QhnZ6c8F28fYucLLc00MM37fZoAZ4g7QCYzwIl38i5TwJR5xGqzOv6YMideyLM4tytCzLCRwJoQen2LI66p5A==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

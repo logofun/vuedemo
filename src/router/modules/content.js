@@ -34,5 +34,14 @@ export default {
         title: "列表",
       },
     },
+    {
+      path: "/content4",
+      name: "content4",
+      component: () => import("@/views/content/index4.vue"),
+      meta: {
+        title: "富文本",
+      },
+    },    
+
   ],
 };
