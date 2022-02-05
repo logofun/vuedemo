@@ -37,7 +37,7 @@ export default {
     {
       path: "/content4",
       name: "content4",
-      component: () => import("@/views/content/index4.vue"),
+      component: () => import("@/views/content/tinymce.vue"),
       meta: {
         title: "富文本",
       },

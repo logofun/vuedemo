@@ -34,5 +34,13 @@ export default {
         title: "标题列表",
       },
     },
+    {
+      path: "/news4",
+      name: "news4",
+      component: () => import("@/views/news/editor.vue"),
+      meta: {
+        title: "Quill",
+      },
+    },
   ],
 };
