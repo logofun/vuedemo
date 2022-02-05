@@ -1,10 +1,11 @@
 <template>
-  <quill-editor :content="val"></quill-editor>
+  <quill-editor theme="snow"></quill-editor>
 </template>
 
 <script>
 // @ is an alias to /src
-import { QuillEditor } from "@/components/index";
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import { ref } from "vue";
 export default {
   components: {

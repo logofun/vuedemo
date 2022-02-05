@@ -21,7 +21,7 @@ export default {
     {
       path: "/content2",
       name: "content2",
-      component: () => import("@/views/content/index2.vue"),
+      component: () => import("@/views/content/simpletable.vue"),
       meta: {
         title: "表格",
       },
@@ -29,7 +29,7 @@ export default {
     {
       path: "/content3",
       name: "content3",
-      component: () => import("@/views/content/index3.vue"),
+      component: () => import("@/views/content/clist.vue"),
       meta: {
         title: "列表",
       },
