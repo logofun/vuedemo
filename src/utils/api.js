@@ -19,7 +19,9 @@ httpService.interceptors.request.use(
     // 让每个请求携带token
     const userInfoData = getLocalStorage(userInfo);
     if (userInfoData.token) {
-      config.headers.authorization = userInfoData.token;
+      // config.headers.authorization = userInfoData.token;
+      // 后台用的是express-wjt 所以token 需加前缀 Bearer 
+      config.headers.authorization = 'Bearer ' + userInfoData.token;
     }
     return config;
   },
