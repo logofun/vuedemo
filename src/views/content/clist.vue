@@ -48,6 +48,7 @@
 import { onMounted, ref, reactive } from "vue";
 import { defineComponent } from "vue";
 import { aacList } from "./service";
+import fetch from '@/utils/api';
 //
 export default defineComponent({
   setup() {
@@ -71,11 +72,14 @@ export default defineComponent({
     const showModal = (n) => {
       visible.value = true;
       console.log(n)
-      // let curl = "topic/f/"+n;
-      // console.log(curl);
-      // let ctx = fetch.get(curl).then((d)=>{return d});
-      // titlebyid.value =ctx.Title;
-      // contentbyid.value = ctx.Content;
+      let curl = "topic/f/"+n;
+      console.log(curl);
+      fetch.get(curl).then((d)=>{
+        titlebyid.value = d.Title;
+        contentbyid.value = d.Content;
+        // console.log(d);
+      });
+      
       
       // console.log(contentbyid.value);
       
