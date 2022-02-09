@@ -36,12 +36,12 @@
 
   <a-modal
     v-model:visible="visible"
-    title="Basic Modal"
+    :title="titlebyid"
     width="100%"
     wrap-class-name="full-modal"
     @ok="handleOk"
   >
-    <p v-html="newnew"></p>
+    <p v-html="contentbyid"></p>
   </a-modal>
 </template>
 <script>
@@ -57,25 +57,27 @@ export default defineComponent({
       console.log("INDEX3 Component is mounted!");
 
       aacList().then((res) => {
-        data.push(...res.data);
+        // data.push(...res.data);
+        data.push(...res);
         console.log(data);
       });
     });
 
     // 弹窗操作
     const visible = ref(false);
-    const newnew = ref("");
+    const titlebyid = ref("");
+    const contentbyid = ref("");
   
     const showModal = (n) => {
       visible.value = true;
-      console.log(n);
-      // newnew.value="test a test";
-      newnew.value = data[n - 1].Content;
+      console.log(n)
+      // let curl = "topic/f/"+n;
+      // console.log(curl);
+      // let ctx = fetch.get(curl).then((d)=>{return d});
+      // titlebyid.value =ctx.Title;
+      // contentbyid.value = ctx.Content;
       
-      console.log(newnew.value);
-      // n = n - 1;
-      // newnew.value = data[n].Content.replace(/(\n\r|\r\n|\r|\n)/g,'<br/>');
-      // newnew.value = strn;
+      // console.log(contentbyid.value);
       
     };
 
@@ -89,7 +91,7 @@ export default defineComponent({
       onChange: (page) => {
         console.log(page);
       },
-      pageSize: 12, //一页显示几个list信息
+      pageSize: 10, //一页显示几个list信息
     };
 
     return {
@@ -98,7 +100,8 @@ export default defineComponent({
       visible,
       showModal,
       handleOk,
-      newnew,
+      contentbyid,
+      titlebyid,
     };
   },
 });

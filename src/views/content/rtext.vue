@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <p class="tipx">
+    <!-- <p class="tipx">
       组件版，将tinymce封装成一个组件来调用(位于/src/components/Tinymce.vue)
-    </p>
+    </p> -->
     <Tinymce v-model:value="val" />
 
     <button @click="isText = !isText" style="margin: 10px">html切换</button>
