@@ -41,6 +41,14 @@ export default {
       meta: {
         title: "富文本",
       },
+    },  
+    {
+      path: "/content5",
+      name: "content5",
+      component: () => import("@/views/content/richtext.vue"),
+      meta: {
+        title: "富文本22",
+      },
     },    
 
   ],

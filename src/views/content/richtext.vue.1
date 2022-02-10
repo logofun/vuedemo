@@ -1,0 +1,54 @@
+ <template>
+  <div id="app">
+    <editor
+      api-key="no-api-key"
+      :init="{
+        height: 500,
+        menubar: false,
+        plugins: [
+          'advlist autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount',
+        ],
+        toolbar:
+          'undo redo | formatselect | bold italic backcolor | \
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist outdent indent | removeformat | help',
+
+           
+      }"
+      initial-value = "hahaha"
+      v-model="content"
+    />
+  </div>
+  <a-alert message="InfoText" type="info" />
+
+</template>
+
+ <script>
+import Editor from "@tinymce/tinymce-vue";
+import {ref} from "vue";
+
+export default {
+  name: "tinymce11",
+  components: {
+    editor: Editor,
+  },
+  setup(){
+      const content = ref('');
+      const InfoText =ref("
+      ")
+
+      return{
+          content,
+      }
+      
+  }
+};
+</script>
+
+
+'fullscreen undo redo | formatselect fontselect fontsizeselect |cut copy paste pastetext | forecolor backcolor bold italic underline strikethrough link anchor \
+        |blockquote subscript superscript removeformat | alignleft aligncenter alignright alignjustify outdent indent | bullist numlist \
+        |table image axupimgs media emoticons charmap hr pagebreak insertdatetime selectall visualblocks searchreplace | code print preview | indent2em lineheight formatpainter'}" 
+        
