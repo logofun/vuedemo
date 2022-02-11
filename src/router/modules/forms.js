@@ -8,13 +8,13 @@ export default {
     icon: "HomeOutlined",
     title: "组件",
   },
-  // redirect: '/news',
+  
   children: [
 
     {
       path: "/ftable",
       name: "ftable",
-      component: () => import("@/views/news/ftable.vue"),
+      component: () => import("@/views/forms/ftable.vue"),
       meta: {
         title: "简单表格",
       },
@@ -22,7 +22,7 @@ export default {
     {
       path: "/flist",
       name: "flist",
-      component: () => import("@/views/news/flist.vue"),
+      component: () => import("@/views/forms/flist.vue"),
       meta: {
         title: "标题列表",
       },
@@ -30,7 +30,7 @@ export default {
     {
       path: "/editor2",
       name: "editor2",
-      component: () => import("@/views/news/qeditor.vue"),
+      component: () => import("@/views/forms/qeditor.vue"),
       meta: {
         title: "Quill2",
       },
