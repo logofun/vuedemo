@@ -11,43 +11,35 @@ export default {
   // redirect: "/content",
   children: [
     {
-      path: "/content1",
-      name: "content1",
-      component: () => import("@/views/content/index.vue"),
+      path: "/ctable",
+      name: "ctable",
+      component: () => import("@/views/content/ctable.vue"),
       meta: {
-        title: "登录页面",
+        title: "简单表格",
       },
     },
     {
-      path: "/content2",
-      name: "content2",
-      component: () => import("@/views/content/simpletable.vue"),
-      meta: {
-        title: "表格",
-      },
-    },
-    {
-      path: "/content3",
-      name: "content3",
+      path: "/clist",
+      name: "clist",
       component: () => import("@/views/content/clist.vue"),
       meta: {
-        title: "列表",
+        title: "简单列表",
       },
     },
     {
-      path: "/content4",
-      name: "content4",
-      component: () => import("@/views/content/rtext.vue"),
+      path: "/richtext",
+      name: "richtext",
+      component: () => import("@/views/content/richtext.vue"),
       meta: {
         title: "富文本",
       },
     },  
     {
-      path: "/content5",
-      name: "content5",
-      component: () => import("@/views/content/richtext.vue"),
+      path: "/rtext",
+      name: "rtext",
+      component: () => import("@/views/content/rtext.vue"),
       meta: {
-        title: "富文本22",
+        title: "富文本-简",
       },
     },    
 

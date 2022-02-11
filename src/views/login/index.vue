@@ -93,7 +93,7 @@ export default defineComponent({
       const { data } = await userLogin(params);
       await store.dispatch("login", data);
       message.success("登录成功");
-      router.push("/");
+      router.push("/index");
     };
 
     /**

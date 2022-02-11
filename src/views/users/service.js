@@ -1,4 +1,4 @@
-import fetch from '@/utils/fetch';
+import fetch from '@/utils/api';
 
 export const userAdd = params => fetch.post('api/testUser/add', params)
 

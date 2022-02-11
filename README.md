@@ -1,22 +1,24 @@
-# foolAdminTemplate
-
-vite2+vue3+ant-design-vue3搭建的一个后台管理系统, 拿来即用，快速搭建页面。
+# my Template
+借助别人的源码进行学习和改进
+vite2+vue3+ant-design-vue3搭建的一个后台管理系统
 
 ## 简介
 
-* json数据配置表格、表单
-
-* 命令快速构建路由及页面
+* 自己搭建了一个Express+Sqlite3的后台api
+* 用于验证各种aixos数据传递
 
 ### 文件夹结构
 ```
-├─ doc                                      // 文档
 ├─ public                                   // 存放icon
 ├─ src                                      // 代码编写的目录
 │  ├─ assets                                // 静态文件
 │  │  ├─ less                               // 公共less
 │  │  └─ images                             // 图片文件
 │  ├─ components                            // 公共组件
+│  │  ├─ Editor                             // 富文本组件
+│  │  │	 └─ wangeditor.vue
+│  │  │	 └─ quilleditor.vue
+│  │  │	 └─ tinymceeditor.vue
 │  │  ├─ FormPanel                          // 表单组件
 │  │  │	 └─ index.vue
 │  │  ├─ SearchPanel                        // 筛选组件
@@ -30,7 +32,7 @@ vite2+vue3+ant-design-vue3搭建的一个后台管理系统, 拿来即用，快�
 │  ├─ views                                 // 页面文件
 │  │  ├─ components                         // 页面公用组件
 │  │  ├─ users                              // users模块为例目录
-│  │  │  ├─ components                      // users模块组件
+│  │  │  └─ components                      // users模块组件
 │  │  │  └─ index.vue                       // 对应路由: /users
 │  │  │  └─ list.vue                        // 对应路由: /users/list
 │  │  │  └─ info.vue                        // 对应路由: /users/info
@@ -52,9 +54,9 @@ vite2+vue3+ant-design-vue3搭建的一个后台管理系统, 拿来即用，快�
 └─ package.json                             // 配置依赖
 ```
 
-## 安装下载
-
-- 下载地址：https://github.com/yinMrsir/foolAdminTemplate.git
+我增加了
+content 一套（路由，views,models,service）
+forms   一套（路由，views,models,service）
 
 ## 快速使用
 
@@ -81,19 +83,4 @@ yarn build
 
 yarn build && yarn serve
 
-# 创建页面(自动生成视图页面及路由)
-yarn create-view
-or
-npm run create-view
 
-# 移除页面(自动移除视图页面及路由)
-yarn del-view
-or
-npm run del-view
-```
-
-## 交流 & 提问
-
-QQ交流群: 411121858
-
-提问：https://github.com/yinMrsir/foolAdminTemplate/issues

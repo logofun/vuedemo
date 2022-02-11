@@ -1,3 +1,4 @@
+// 本 model.js 被 src/store/index.js 动态添加
 import { collapsed, getLocalStorage, setLocalStorage } from '@/utils/storage'
 
 const state = {
