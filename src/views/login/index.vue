@@ -91,7 +91,7 @@ export default defineComponent({
       }
       const params = await formPanel.value.onSubmit();
       const { code,msg,data } = await userLogin(params);
-      console.log(!data); //登录不成功其 data为undefined 后还需修改
+      // console.log(!data); //登录不成功其 data为undefined 后还需修改
       if (code == -1) {
         // message.error("登录失败");
         message.error(msg);

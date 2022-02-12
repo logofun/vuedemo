@@ -4,10 +4,10 @@
  * @returns {string|null}
  */
 function getUrlParams(name) {
-  const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
-  const r = window.location.search.substring(1).match(reg)
-  if (r != null) return decodeURI(r[2])
-  return null
+  const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  const r = window.location.search.substring(1).match(reg);
+  if (r != null) return decodeURI(r[2]);
+  return null;
 }
 
 /**
@@ -15,11 +15,11 @@ function getUrlParams(name) {
  * @returns {Promise<null>}
  */
 function sleep(time) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      resolve()
-    }, time * 1000)
-  })
+      resolve();
+    }, time * 1000);
+  });
 }
 
 /**
@@ -29,15 +29,15 @@ function sleep(time) {
  * @returns {{}}
  */
 function unique(arr, ukey) {
-  let result = []
-  let obj = {}
+  let result = [];
+  let obj = {};
   for (let i = 0, len = arr.length; i < len; i++) {
     if (!obj[arr[i][ukey]]) {
-      result.push(arr[i])
-      obj[arr[i][ukey]] = true
+      result.push(arr[i]);
+      obj[arr[i][ukey]] = true;
     }
   }
-  return result
+  return result;
 }
 
 /**
@@ -47,23 +47,23 @@ function unique(arr, ukey) {
  */
 function getType(obj) {
   const map = {
-    '[object Boolean]': 'boolean',
-    '[object Number]': 'number',
-    '[object String]': 'string',
-    '[object Function]': 'function',
-    '[object Array]': 'array',
-    '[object Data]': 'date',
-    '[object RegExp]': 'regExp',
-    '[object Undefined]': 'undefined',
-    '[object Null]': 'null',
-    '[object Object]': 'object',
-  }
+    "[object Boolean]": "boolean",
+    "[object Number]": "number",
+    "[object String]": "string",
+    "[object Function]": "function",
+    "[object Array]": "array",
+    "[object Data]": "date",
+    "[object RegExp]": "regExp",
+    "[object Undefined]": "undefined",
+    "[object Null]": "null",
+    "[object Object]": "object",
+  };
 
   if (obj instanceof window.Element) {
-    return 'element'
+    return "element";
   }
 
-  return map[Object.prototype.toString.call(obj)]
+  return map[Object.prototype.toString.call(obj)];
 }
 
-export { getUrlParams, sleep, unique, getType }
+export { getUrlParams, sleep, unique, getType };

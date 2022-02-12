@@ -31,7 +31,7 @@ export default {
       name: "richtext",
       component: () => import("@/views/content/richtext.vue"),
       meta: {
-        title: "富文本",
+        title: "富文本@Tinymce",
       },
     },  
     {

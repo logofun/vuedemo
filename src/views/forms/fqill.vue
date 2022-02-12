@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <a-input-number
-      id="inputNumber"
-      v-model:value="numbervalue"
-      :min="1"
-      :max="10000"
-      :step="1"
-      @change="showTitle"
-    />
-    标题 {{ title }}
-    <a-button type="primary"> Edit </a-button>
+    <a-space>
+      <a-input-number
+        id="inputNumber"
+        v-model:value="numbervalue"
+        :min="1"
+        :max="10000"
+        :step="1"
+        @change="showTitle"
+      />
+      标题 {{ title }}
+      <a-button type="primary" @click="revise"> 修改\n </a-button>
+    </a-space>
     <QuillEditor :content="content"></QuillEditor>
   </div>
+  <a-alert :message="content" type="info" />
 </template>
 
 <script >
@@ -39,11 +42,23 @@ export default {
         // console.log(di.Content)
       });
     };
+    const revise = () => {
+      console.log('button click')
+      let pattern = /\\n/;
+
+      let str = content.value;
+      console.log(str)
+      console.log(pattern.test(str));
+      str.replace(/\\n/, "<br>");
+
+      content.value = str;
+    };
     return {
       content,
       numbervalue,
       title,
       showTitle,
+      revise,
     };
   },
 };
