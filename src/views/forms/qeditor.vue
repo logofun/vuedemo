@@ -56,6 +56,7 @@ export default {
   outline: none;
 }
 
+/* link打开时出现遮罩 */
 .ql-snow .ql-tooltip  {
 left: 0 !important;
 z-index:200;
