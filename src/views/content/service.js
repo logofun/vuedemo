@@ -1,5 +1,4 @@
-// import fetch from '@/utils/quest';
-import fetch from '@/utils/api';
+import fetch from "@/utils/api";
 
 /**
  * 定义接口
@@ -7,8 +6,4 @@ import fetch from '@/utils/api';
  * @return {*}
  */
 
-// export const aaList = params => fetch.get('json/list.json', params)
-// export const aacList = params => fetch.get('json/contentlist.json', params)
-
-// export const aaList = params => fetch.get('topic/f/:id', params)
-export const aacList = params => fetch.get('topic/r/Title', params)
+export const aacList = (params) => fetch.get("topic/r/Title", params);

@@ -21,7 +21,7 @@
 <script>
 import { useRequest } from "vue-request";
 import { defineComponent, reactive, ref } from "vue";
-import fetch from "@/utils/fetch";
+import fetch from "@/utils/api";
 
 export default defineComponent({
   props: {

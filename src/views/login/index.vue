@@ -91,9 +91,16 @@ export default defineComponent({
       }
       const params = await formPanel.value.onSubmit();
       const { data } = await userLogin(params);
-      await store.dispatch("login", data);
-      message.success("登录成功");
-      router.push("/index");
+      console.log(!data); //登录不成功其 data为undefined 后还需修改
+      if (!data) {
+        message.error("登录失败");
+        return;
+      } else {
+        await store.dispatch("login", data);
+        console.log(store.state.userInfo);
+        message.success("登录成功");
+        router.push("/index");
+      }
     };
 
     /**

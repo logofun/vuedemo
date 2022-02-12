@@ -35,5 +35,13 @@ export default {
         title: "Quill2",
       },
     },
+    {
+      path: "/editor1",
+      name: "editor1",
+      component: () => import("@/views/forms/qedit.vue"),
+      meta: {
+        title: "Quill",
+      },
+    },
   ],
 };
