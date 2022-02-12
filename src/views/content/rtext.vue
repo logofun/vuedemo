@@ -16,7 +16,7 @@
 // @ is an alias to /src
 import { Tinymce } from "@/components/index";
 import { ref } from "vue";
-import fetch from "@/utils/api";
+// import fetch from "@/utils/api";
 
 export default {
   name: "Home",

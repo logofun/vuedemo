@@ -28,20 +28,13 @@ export default {
       },
     },
     {
-      path: "/editor2",
-      name: "editor2",
+      path: "/myeditor",
+      name: "myeditor",
       component: () => import("@/views/forms/qeditor.vue"),
       meta: {
-        title: "Quill2",
+        title: "Quill封装-简",
       },
     },
-    {
-      path: "/editor1",
-      name: "editor1",
-      component: () => import("@/views/forms/qedit.vue"),
-      meta: {
-        title: "Quill",
-      },
-    },
+
   ],
 };

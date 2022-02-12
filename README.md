@@ -6,6 +6,7 @@ vite2+vue3+ant-design-vue3搭建的一个后台管理系统
 
 * 自己搭建了一个Express+Sqlite3的后台api
 * 用于验证各种aixos数据传递
+* 自己封装了Tinymce和Quill两个富文本组件
 
 ### 文件夹结构
 ```

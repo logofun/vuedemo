@@ -1,30 +1,27 @@
 <template>
-  <richTextEditor
-   
-    placeHolder="Write a text"
-    
-  ></richTextEditor>
+  <QuillEditor :content="content"></QuillEditor>
 </template>
 
-<script>
+<script >
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
 
+import { QuillEditor } from "@/components/index";
+import { ref } from "vue";
 
-import { richTextEditor } from "vue3-quilljs";
-import "vue3-quilljs/lib/style.css";
-
-export default{
-Components:{
-  richTextEditor:richTextEditor,
+export default {
+  components: {
+    QuillEditor,
   },
-
-setup(){
-
-return{
-
-}
-}
-
-}
+  setup() {
+    const content = ref("This is an Example!......");
+    return {
+      content,
+    };
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+</style>
