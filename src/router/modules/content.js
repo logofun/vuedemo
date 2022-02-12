@@ -39,7 +39,7 @@ export default {
       name: "rtext",
       component: () => import("@/views/content/rtext.vue"),
       meta: {
-        title: "富文本-简",
+        title: "Tinymce封装-简",
       },
     },    
 
