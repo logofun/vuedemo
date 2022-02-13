@@ -10,51 +10,57 @@
         @change="showTitle"
       />
       标题 {{ title }}
-      <a-button type="primary" @click="revise"> 修改\n </a-button>
+      <a-button type="primary" @click="revise"> 修改\n为br </a-button>
     </a-space>
-    <QuillEditor :content="content"></QuillEditor>
+    <div>
+      <quill-editor
+        v-model:value="state.content"
+        :options="state.editorOption"
+        :disabled="state.disabled"
+      />
+    </div>
   </div>
-  <a-alert :message="content" type="info" />
+  <a-alert :message="state.content" type="info" />
 </template>
 
 <script >
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
-import "quill/dist/quill.bubble.css";
-
-import { QuillEditor } from "@/components/index";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+import { quillEditor } from "@/components/QuillEditor/index";
 import fetch from "@/utils/api";
 
 export default {
   components: {
-    QuillEditor,
+    quillEditor,
   },
   setup() {
-    const content = ref("This is an Example!......");
     const numbervalue = ref(1);
     const title = ref("");
+    const state = reactive({
+      curTheme: "snow",
+      showEditor: true,
+      content: "This is an Example!......",
+      // disabled: false,
+    });
     const showTitle = () => {
       fetch.get("topic/f/" + numbervalue.value).then((di) => {
         title.value = di.Title;
-        content.value = di.Content;
-        // console.log(val)
-        // console.log(di.Content)
+        state.content = di.Content;
       });
     };
     const revise = () => {
-      console.log('button click')
-      let pattern = /\\n/;
-
-      let str = content.value;
-      console.log(str)
-      console.log(pattern.test(str));
-      str.replace(/\\n/, "<br>");
-
-      content.value = str;
+      // console.log("button click");
+      // let pattern = /\\n/g;
+      // let str = state.content;
+      // console.log('old:'+str);
+      // console.log(pattern.test(str));
+      // let nstr = str.replace(/\\n/g, "<br>");
+      // console.log('new:'+nstr)
+      let str = state.content;
+      let nstr = str.replace(/\\n/g, "<br>");
+      state.content = nstr;
     };
     return {
-      content,
+      state,
       numbervalue,
       title,
       showTitle,
@@ -64,5 +70,32 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.tab-button-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+.tab-button-wrap button {
+  padding: 15px 20px;
+  border: 1px solid #efefef;
+  background: #fff;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.tab-button-wrap button.on,
+.tab-button-wrap button:hover {
+  background: #efefef;
+}
+.tab-button-wrap button:active,
+.tab-button-wrap button:focus {
+  border: none;
+  outline: none;
+}
+
+/* link打开时出现遮罩 */
+.ql-snow .ql-tooltip {
+  left: 0 !important;
+  z-index: 200;
+}
 </style>

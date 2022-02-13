@@ -10,9 +10,9 @@
         </div>
         <template #overlay>
           <a-menu>
-            <a-menu-item>
-              <a @click="logout">退出登录</a>
-            </a-menu-item>
+           
+              <a-menu-item @click="logout">退出登录</a-menu-item>
+           
           </a-menu>
         </template>
       </a-dropdown>
