@@ -12,7 +12,7 @@
       标题 {{ title }}
       <a-button type="primary" @click="revise"> 修改\n为br </a-button>
     </a-space>
-    <div>
+    <div class="quill-2">
       <quill-editor
         v-model:value="state.content"
         :options="state.editorOption"
@@ -97,5 +97,9 @@ export default {
 .ql-snow .ql-tooltip {
   left: 0 !important;
   z-index: 200;
+}
+/* html中显示\n为换行符 */
+.quill-2 {
+  white-space: pre-line;
 }
 </style>

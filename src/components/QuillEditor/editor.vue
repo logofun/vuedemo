@@ -3,6 +3,8 @@
 </template>
 
 <script>
+// https://github.com/flyween/vue3-quill
+// 直接使用源代码内容
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'

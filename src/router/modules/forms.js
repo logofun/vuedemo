@@ -28,16 +28,16 @@ export default {
       },
     },
     {
-      path: "/qeditor",
-      name: "qeditor",
+      path: "/fqill",
+      name: "fqill",
       component: () => import("@/views/forms/fqill.vue"),
       meta: {
         title: "Quill",
       },
     },
     {
-      path: "/myeditor",
-      name: "myeditor",
+      path: "/qeditor",
+      name: "qeditor",
       component: () => import("@/views/forms/qeditor.vue"),
       meta: {
         title: "Quill封装-简",

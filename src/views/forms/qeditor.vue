@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="quill-1">
     <quill-editor
       v-model:value="state.content"
       :options="state.editorOption"
@@ -12,7 +12,13 @@
 
 <script >
 import { reactive } from "vue";
-import { quillEditor } from "@/components/QuillEditor/index";
+import { Quill, quillEditor } from "@/components/QuillEditor/index";
+
+// 加入yarn add quill-html-edit-button 测试源码编辑
+import htmlEditButton from "quill-html-edit-button";
+Quill.register({
+  "modules/htmlEditButton": htmlEditButton,
+});
 
 export default {
   name: "AppQuill",
@@ -23,8 +29,20 @@ export default {
     const state = reactive({
       curTheme: "snow",
       showEditor: true,
-      content: "<p>2333</p>",
+      content: "<p>23\n33</p>\n<pre>const a = 1;</pre>",
       disabled: false,
+      editorOption: {
+        modules: {
+          // toolbars: [
+          // custom toolbars options
+          // will override the default configuration
+          // ],
+          // other moudle options here
+          // otherMoudle: {}
+          htmlEditButton: {},
+        },
+        // more options
+      },
     });
     return {
       state,
@@ -33,7 +51,7 @@ export default {
 };
 </script>
 
-<style >
+<style>
 .tab-button-wrap {
   display: flex;
   justify-content: center;
@@ -57,8 +75,13 @@ export default {
 }
 
 /* link打开时出现遮罩 */
-.ql-snow .ql-tooltip  {
-left: 0 !important;
-z-index:200;
+.ql-snow .ql-tooltip {
+  left: 0 !important;
+  z-index: 200;
+}
+
+/* html中显示\n为换行符 */
+.quill-1 {
+  white-space: pre-line;
 }
 </style>
