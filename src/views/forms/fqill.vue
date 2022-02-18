@@ -49,15 +49,16 @@ export default {
     };
     const revise = () => {
       // console.log("button click");
-      // let pattern = /\\n/g;
-      // let str = state.content;
-      // console.log('old:'+str);
-      // console.log(pattern.test(str));
-      // let nstr = str.replace(/\\n/g, "<br>");
-      // console.log('new:'+nstr)
+      // let pattern = /\\n/g; “&nbsp;” “&lt;” “&gt;”
+      // 对应 换行符 空格 < >
+
       let str = state.content;
-      let nstr = str.replace(/\\n/g, "<br>");
-      state.content = nstr;
+      str = str.replace(/&nbsp;/g, " ");
+      // str = str.replace(/&lt;/g, "<");
+      // str = str.replace(/&gt;/g, ">");
+
+      str = str.replace(/\\n/g, "<br>");
+      state.content = str;
     };
     return {
       state,
