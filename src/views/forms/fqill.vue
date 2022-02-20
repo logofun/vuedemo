@@ -10,8 +10,10 @@
         @change="showTitle"
       />
       标题 {{ title }}
-      <a-button type="primary" @click="revise"> 修改\n为br </a-button>
     </a-space>
+    <a-button type="primary" @click="revise"> 修改\n为br </a-button>
+    <a-button type="primary" @click="update"> 更新content </a-button>
+
     <div class="quill-2">
       <quill-editor
         v-model:value="state.content"
@@ -27,6 +29,7 @@
 import { ref, reactive } from "vue";
 import { quillEditor } from "@/components/QuillEditor/index";
 import fetch from "@/utils/api";
+import { updatecontent } from "./service";
 
 export default {
   components: {
@@ -60,12 +63,20 @@ export default {
       str = str.replace(/\\n/g, "<br>");
       state.content = str;
     };
+    const update = () => {
+      let params = { 'content': state.content,'ID':numbervalue.value };
+      updatecontent(params).then((d) => {
+        console.log(d);
+      });
+    };
+
     return {
       state,
       numbervalue,
       title,
       showTitle,
       revise,
+      update,
     };
   },
 };
