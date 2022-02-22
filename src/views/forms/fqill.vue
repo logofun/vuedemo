@@ -30,6 +30,7 @@ import { ref, reactive } from "vue";
 import { quillEditor } from "@/components/QuillEditor/index";
 import fetch from "@/utils/api";
 import { updatecontent } from "./service";
+import { message } from 'ant-design-vue';
 
 export default {
   components: {
@@ -67,6 +68,9 @@ export default {
       let params = { 'content': state.content,'ID':numbervalue.value };
       updatecontent(params).then((d) => {
         console.log(d);
+        if (d.code == 200) {
+          message.success(d.msg)
+        }
       });
     };
 

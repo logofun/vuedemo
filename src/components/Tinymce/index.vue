@@ -1,5 +1,5 @@
  <template>
-  <div class="tinymce-boxz">
+  <div class="tinymce-boxz" v-show="ok">
     <Editor v-model="content" :api-key="apiKey" :init="init" />
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
     },
   },
   setup(props, context) {
+    const ok = ref(false);
     const content = ref(props.value);
     const tiny = reactive({
       apiKey: "qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc", //https://github.com/tinymce/tinymce-vue/blob/main/src/demo/views/Iframe.vue
@@ -93,6 +94,12 @@ export default {
             };
           };
         },
+        // init完成后的回调 一般用于延迟显示编辑器界面
+        // 可设置v-show
+        init_instance_callback: function (editor) {
+          console.log("ID为: " + editor.id + " 的编辑器已初始化完成.");
+          ok.value = 'true';
+        },
       },
     });
     //内容有变化，就更新内容，将值返回给父组件
@@ -100,6 +107,7 @@ export default {
       context.emit("update:value", content.value);
     });
     return {
+      ok,
       content,
       ...toRefs(tiny),
     };
