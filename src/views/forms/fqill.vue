@@ -10,8 +10,10 @@
         @change="showTitle"
       />
       标题 {{ title }}
-      <a-button type="primary" @click="revise"> 修改\n为br </a-button>
     </a-space>
+    <a-button type="primary" @click="revise"> 修改\n为br </a-button>
+    <a-button type="primary" @click="update"> 更新content </a-button>
+
     <div class="quill-2">
       <quill-editor
         v-model:value="state.content"
@@ -27,6 +29,8 @@
 import { ref, reactive } from "vue";
 import { quillEditor } from "@/components/QuillEditor/index";
 import fetch from "@/utils/api";
+import { updatecontent } from "./service";
+import { message } from 'ant-design-vue';
 
 export default {
   components: {
@@ -49,22 +53,34 @@ export default {
     };
     const revise = () => {
       // console.log("button click");
-      // let pattern = /\\n/g;
-      // let str = state.content;
-      // console.log('old:'+str);
-      // console.log(pattern.test(str));
-      // let nstr = str.replace(/\\n/g, "<br>");
-      // console.log('new:'+nstr)
+      // let pattern = /\\n/g; “&nbsp;” “&lt;” “&gt;”
+      // 对应 换行符 空格 < >
+
       let str = state.content;
-      let nstr = str.replace(/\\n/g, "<br>");
-      state.content = nstr;
+      str = str.replace(/&nbsp;/g, " ");
+      // str = str.replace(/&lt;/g, "<");
+      // str = str.replace(/&gt;/g, ">");
+
+      str = str.replace(/\\n/g, "<br>");
+      state.content = str;
     };
+    const update = () => {
+      let params = { 'content': state.content,'ID':numbervalue.value };
+      updatecontent(params).then((d) => {
+        console.log(d);
+        if (d.code == 200) {
+          message.success(d.msg)
+        }
+      });
+    };
+
     return {
       state,
       numbervalue,
       title,
       showTitle,
       revise,
+      update,
     };
   },
 };

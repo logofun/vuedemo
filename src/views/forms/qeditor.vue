@@ -1,4 +1,5 @@
 <template>
+<!-- quill 简 -->
   <div id="quill-1">
     <quill-editor
       v-model:value="state.content"
@@ -7,7 +8,7 @@
     />
   </div>
 
-  <a-alert :message="state.content" type="info" />
+  <a-textarea v-model:value="state.content" auto-size />
 </template>
 
 <script >

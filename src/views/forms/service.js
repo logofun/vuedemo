@@ -8,3 +8,5 @@ import fetch from "@/utils/api";
 // export const xx = (params) => fetch.post("xx", params);
 
 export const titlelist = (params) => fetch.get("topic/r/Title", params);
+
+export const updatecontent = (params) => fetch.post("topic/u", params);

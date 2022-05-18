@@ -43,6 +43,13 @@ export default {
         title: "Quill封装-简",
       },
     },
-
+    {
+      path: "/ftip",
+      name: "ftip",
+      component: () => import("@/views/forms/ftiptap.vue"),
+      meta: {
+        title: "Tiptap封装-简",
+      },
+    },
   ],
 };
